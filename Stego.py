@@ -61,11 +61,6 @@ def decrypt_stego(stego_image):
     # If end-of-message marker not found, return entire message
     return binary_message
 
-#required variables
-image = cv2.imread('images.jpeg')
-plaintext = input('Enter your text to be encrypted: ')
-key=6
-print("plaintext: ", plaintext)
 
 #caesar cipher encryption
 def encrypt_caesar(plaintext, key):
@@ -101,6 +96,12 @@ def decrypt_caesar(ciphertext, key):
         plaintext += decrypted_char
     return plaintext
 
+
+#Main code
+image = cv2.imread('images.jpeg')
+plaintext = input('Enter your text to be encrypted: ')
+key=6
+print("plaintext: ", plaintext)
 
 #ciphertext string
 ciphertext=encrypt_caesar(plaintext,key)
