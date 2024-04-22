@@ -80,19 +80,6 @@ def encrypt_caesar(plaintext, key):
         ciphertext += encrypted_char
     return ciphertext
 
-#ciphertext string
-ciphertext=encrypt_caesar(plaintext,key)
-print("ciphertext: ", ciphertext)
-
-#create image embedded with binary ciphertext
-stego_image= encrypt_stego(image,ciphertext)
-stego_img_path= "Stego_image.png"
-cv2.imwrite(stego_img_path,stego_image)
-
-
-#extract binary ciphertext from image
-binary_ciphertext = decrypt_stego(stego_image)
-
 def binary_to_string(binary_ciphertext):
     ciphertext = ""
     for i in range(0, len(binary_ciphertext), 8):
@@ -100,10 +87,6 @@ def binary_to_string(binary_ciphertext):
         char = chr(int(byte, 2))
         ciphertext += char
     return ciphertext
-
-# Convert binary message to string and print the original message
-string_ciphertext = binary_to_string(binary_ciphertext)
-print("string ciphertext: ", string_ciphertext)
 
 #caesar cipher decryption
 def decrypt_caesar(ciphertext, key):
@@ -119,8 +102,21 @@ def decrypt_caesar(ciphertext, key):
     return plaintext
 
 
+#ciphertext string
+ciphertext=encrypt_caesar(plaintext,key)
+print("ciphertext: ", ciphertext)
 
+#create image embedded with binary ciphertext
+stego_image= encrypt_stego(image,ciphertext)
+stego_img_path= "Stego_image.png"
+cv2.imwrite(stego_img_path,stego_image)
 
+#extract binary ciphertext from image
+binary_ciphertext = decrypt_stego(stego_image)
+
+# Convert binary message to string and print the original message
+string_ciphertext = binary_to_string(binary_ciphertext)
+print("string ciphertext: ", string_ciphertext)
 
 string_final_text=decrypt_caesar(string_ciphertext, key)
 print("Original message:", string_final_text)
