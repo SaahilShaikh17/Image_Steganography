@@ -100,7 +100,8 @@ def decrypt_caesar(ciphertext, key):
 #Main code
 image = cv2.imread('images.jpeg')
 plaintext = input('Enter your text to be encrypted: ')
-key= random.randint(4,100)
+key= random.randint(2,25)
+print('your secret key is ',key)
 print("plaintext: ", plaintext)
 
 #ciphertext string
@@ -119,5 +120,6 @@ binary_ciphertext = decrypt_stego(stego_image)
 string_ciphertext = binary_to_string(binary_ciphertext)
 print("string ciphertext: ", string_ciphertext)
 
-string_final_text=decrypt_caesar(string_ciphertext, key)
+decryption_key= int(input('Enter the secret key: '))
+string_final_text=decrypt_caesar(string_ciphertext, decryption_key)
 print("Original message:", string_final_text)
