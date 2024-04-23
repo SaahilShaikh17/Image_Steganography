@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-
+import random 
 
 def string_to_bin(message):
     binary_message = ""
@@ -100,7 +100,7 @@ def decrypt_caesar(ciphertext, key):
 #Main code
 image = cv2.imread('images.jpeg')
 plaintext = input('Enter your text to be encrypted: ')
-key=6
+key= random.randint(4,100)
 print("plaintext: ", plaintext)
 
 #ciphertext string
